@@ -1,0 +1,41 @@
+spring:
+  application:
+     name: notification-service
+  data:
+    mongodb:
+      uri: ${B2BEDI_MONGODB_HOUYI_URL:mongodb://username:password@wonger-mp:27017/db} #testing environment wonger-mp.corp.oocl.com
+server:
+  port: ${EXPOSE_PORT:8017}
+  maxHttpHeaderSize: 102400000 #10MB
+  maxPostSize: 0
+email:
+  host: ${SMTP_MAIL_SERVER:example.com}
+  port: ${SMTP_MAIL_PORT:25}
+  username: ${SMTP_MAIL_USERNAME:default@example.com}
+  password: ${SMTP_MAIL_PASSWORD:exampleuer}
+logging:
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} %-5level - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+  file: log/notification-service.log
+  # Available levels are: TRACE, DEBUG, INFO, WARN, ERROR, FATAL, OFF
+  level:
+    org:
+      springframework.web: INFO
+      hibernate: ERROR
+---
+spring:
+  profiles: testing
+  data:
+    mongodb:
+      uri: ${B2BEDI_MONGODB_HOUYI_URL:mongodb://username:password@wonger-mp:27017/db_test}
+logging:
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} %-5level - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+  file: log/notification-service.log
+  # Available levels are: TRACE, DEBUG, INFO, WARN, ERROR, FATAL, OFF
+  level:
+    org:
+      springframework.web: DEBUG
+      hibernate: ERROR

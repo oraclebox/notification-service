@@ -1,0 +1,68 @@
+buildscript {
+	ext {
+		springBootVersion = '1.5.17.BUILD-SNAPSHOT'
+	}
+	repositories {
+		mavenCentral()
+		maven { url "https://repo.spring.io/snapshot" }
+		maven { url "https://repo.spring.io/milestone" }
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'groovy'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+
+group = 'com.cargosmart.b2b'
+version = 'SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+	maven { url "https://repo.spring.io/snapshot" }
+	maven { url "https://repo.spring.io/milestone" }
+}
+
+
+ext {
+	springCloudVersion = 'Edgware.BUILD-SNAPSHOT'
+}
+
+dependencies {
+	compile('org.springframework.boot:spring-boot-starter-data-mongodb')
+	compile('org.springframework.boot:spring-boot-starter-web')
+	compile('org.springframework.cloud:spring-cloud-starter-netflix-hystrix')
+	compile group: 'org.codehaus.groovy', name: 'groovy-all', version: '2.3.11'
+	// Simple Java Mail
+	// https://github.com/bbottema/simple-java-mail
+	// http://www.simplejavamail.org/#/about
+	compile group: 'org.simplejavamail', name: 'simple-java-mail', version: '5.0.6'
+
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+}
+
+dependencyManagement {
+	imports {
+		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+	}
+}
+
+test {
+	//maxHeapSize = "1024m"
+	// explicitly include or exclude tests
+	include '**/CompleteTestSuite*'
+	// show standard out and standard error of the test JVM(s) on the console
+	testLogging.showStandardStreams = true
+	// listen to events in the test execution lifecycle
+	beforeTest { descriptor ->
+		logger.lifecycle("Running test: " + descriptor)
+	}
+	// listen to standard out and standard error of the test JVM(s)
+	onOutput { descriptor, event ->
+		logger.lifecycle("Test: " + descriptor + " produced standard out/err: " + event.message)
+	}
+}
+
