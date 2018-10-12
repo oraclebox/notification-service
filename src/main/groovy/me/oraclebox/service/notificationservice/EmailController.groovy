@@ -1,4 +1,4 @@
-package com.cargosmart.b2b.notificationservice
+package me.oraclebox.service.notificationservice
 
 import groovy.util.logging.Slf4j
 import org.simplejavamail.email.Email
@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.*
 @RequestMapping("/service/notification/")
 class EmailController {
 
+    @Autowired
+    EmailProperty emailProperty;
     @Autowired
     EmailService emailService;
 
@@ -36,7 +38,7 @@ class EmailController {
             Assert.notNull(it.content.template, "Missing email content.template.");
 
             EmailPopulatingBuilder emailBuilder = EmailBuilder.startingBlank()
-                    .from(it.from == null ? 'noreply@cargosmart.com' : it.from)
+                    .from(it.from == null ? emailProperty.noreply : it.from)
                     .withSubject(it.subject);
 
             // Use notification group if provide group name
@@ -95,9 +97,8 @@ class EmailController {
         ResponseObject responseObject = new ResponseObject(systemMessage: "Group has been created.");
         Assert.notNull(notificationGroup, "Missing content body.");
         Assert.notNull(notificationGroup.name, "Missing notification group name.");
-        // Default organization is Cargosmart
         if (notificationGroup.organization == null) {
-            notificationGroup.organization = 'Cargosmart';
+            notificationGroup.organization = emailProperty.defaultOrganization;
         }
         responseObject.dataObject = emailService.createNotificationGroup(notificationGroup);
         return new ResponseEntity<ResponseObject>(responseObject, HttpStatus.OK);

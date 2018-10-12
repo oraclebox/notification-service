@@ -1,4 +1,4 @@
-package com.cargosmart.b2b.notificationservice
+package me.oraclebox.service.notificationservice
 
 import com.fasterxml.jackson.core.type.TypeReference
 import org.junit.FixMethodOrder
@@ -18,7 +18,7 @@ class EmailControllerTest extends CommonWebTest {
     void _01_sendEmail() {
         RequestObject requestObject = new RequestObject();
         Email email = new Email();
-        email.to.add("roger.chan@cargosmart.com");
+        email.to.add("roger.chan@example.com");
         email.subject = "Unit testing Notification service";
         email.content = new Content(template: "This is content body.");
         requestObject.emails.add(email);
@@ -82,8 +82,8 @@ class EmailControllerTest extends CommonWebTest {
         assertEquals(200, result.response.status);
         ResponseObject responseObject = objectMapper.readValue(result.response.contentAsString, ResponseObject.class);
         NotificationGroup notificationGroup = objectMapper.readValue(objectMapper.writeValueAsString(responseObject.dataObject), NotificationGroup.class);
-        notificationGroup.recipients.addAll([new Recipient(domain: "chanro3", name: 'Roger Chan', email:"roger.chan@cargosmart.com"),
-                                             new Recipient(domain: "ptlam", name: 'Peter Lam',email:"peter.lam@cargosmart.com")]);
+        notificationGroup.recipients.addAll([new Recipient(domain: "chanro3", name: 'Roger Chan', email:"roger.chan@example.com"),
+                                             new Recipient(domain: "ptlam", name: 'Peter Lam',email:"peter.lam@example.com")]);
         result = PUT('/service/notification/group', notificationGroup);
         responseObject = objectMapper.readValue(result.response.contentAsString, ResponseObject.class);
         notificationGroup = objectMapper.readValue(objectMapper.writeValueAsString(responseObject.dataObject), NotificationGroup.class);

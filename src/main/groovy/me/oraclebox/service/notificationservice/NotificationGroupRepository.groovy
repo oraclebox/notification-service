@@ -1,4 +1,4 @@
-package com.cargosmart.b2b.notificationservice
+package me.oraclebox.service.notificationservice
 
 import org.springframework.data.mongodb.repository.MongoRepository
 import org.springframework.stereotype.Repository

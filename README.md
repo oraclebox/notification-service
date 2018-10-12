@@ -15,7 +15,7 @@ curl --request POST \
   --data '{
 	"emails":[
 		{			
-			"to":["roger.chan@cargosmart.com", "may.cheung@abc.com"],
+			"to":["roger.chan@example.com", "may.cheung@abc.com"],
 			"subject":"Testing is email subject line",
 			"content":{
 				"template":"This is email content with value binding ($bindingkey).",
@@ -58,7 +58,7 @@ curl --request POST \
             {
                 "domain":"chanro3",
                 "name":"Roger Chan",
-                "email":"roger.chan@cargosmart.com"
+                "email":"roger.chan@example.com"
             },
             {
                 "domain":"vvvba",
@@ -67,7 +67,7 @@ curl --request POST \
                 "isCC": true
             },
   		],
-  		"organization":"Cargosmart"
+  		"organization":"example"
 	}'
 ```
 
@@ -84,7 +84,7 @@ curl --request PUT \
             {
                 "domain":"chanro3",
                 "name":"Roger Chan",
-                "email":"roger.chan@cargosmart.com"
+                "email":"roger.chan@example.com"
             },
             {
                 "domain":"vvvba",
@@ -93,7 +93,7 @@ curl --request PUT \
                 "isCC": true
             },
   		],
-  		"organization":"Cargosmart"
+  		"organization":"example"
 	}'
 ```
 
@@ -125,10 +125,10 @@ curl --request DELETE \
 | Field                 | Type               | Constraint                  | Description                                            | Example                       |
 | --------------------- | ------------------ | --------------------------- | ------------------------------------------------------ | ----------------------------- |
 | group                 | String             | Optional                    | Receiver Group Name                                    | prm_notification              |
-| from                  | String             | Optional                    | Email from (default use noreply@cargosmart.com)        |                               |
-| to                    | List<String>       | Mandatory if group  is NULL | List of receiver email addresses                       | ["roger.chan@cargosmart.com"] |
-| cc                    | List<String>       | Optional                    | List of cc email addresses                             | ["roger.chan@cargosmart.com"] |
-| bcc                   | List<String>       | Optional                    | List of bcc email addresses                            | ["roger.chan@cargosmart.com"] |
+| from                  | String             | Optional                    | Email from (default use noreply@example.com)        |                               |
+| to                    | List<String>       | Mandatory if group  is NULL | List of receiver email addresses                       | ["roger.chan@example.com"] |
+| cc                    | List<String>       | Optional                    | List of cc email addresses                             | ["roger.chan@example.com"] |
+| bcc                   | List<String>       | Optional                    | List of bcc email addresses                            | ["roger.chan@example.com"] |
 | subject               | String             | Mandatory                   | Subject of email                                       |                               |
 | content               | Object             | Mandatory                   | Email content body                                     |                               |
 | content.template      | String             | Mandatory                   | Email content, also a groovy template engine template. |                               |
@@ -141,7 +141,7 @@ curl --request DELETE \
 | ------------ | --------------- | ------------------ | -------------------- | --------------------- |
 | id           | String          | Optional (Create)  | Unique ID            |                       |
 | name         | String          | Mandatory (Unique) | Group name           | rpm_notification      |
-| organization | String          | Mandatory          | Group's organization | Default is Cargosmart |
+| organization | String          | Mandatory          | Group's organization | Default is example |
 | createTs     | Date            | Optional           | Create TS            |                       |
 | updateTs     | Date            | Optional           | Update TS            |                       |
 | recipients   | List<Recipient> | Mandatory          | List of Recipient    |                       |
@@ -154,7 +154,7 @@ curl --request DELETE \
 | ------ | ------ | ---------- | ------------------ | ------------------------- |
 | domain | String | Mandatory  | User domain name   | chanro3                   |
 | name   | String | Mandatory  | User full name     | Roger Chan                |
-| email  | String | Mandatory  | User email address | roger.chan@cargosmart.com |
+| email  | String | Mandatory  | User email address | roger.chan@example.com |
 | isCC   | String | Optional   | Use CC i           |                           |
 
 ### Response

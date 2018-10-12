@@ -1,4 +1,4 @@
-package com.cargosmart.b2b.notificationservice
+package me.oraclebox.service.notificationservice
 
 import groovy.util.logging.Slf4j
 import org.simplejavamail.mailer.Mailer
@@ -39,13 +39,6 @@ class EmailProperty {
     int port;
     String username = '';
     String password = '';
-    Notification notification;
-
-}
-
-class Notification{
-    boolean enable;
-    String from;
-    List<String> toList = [];
-    List<String> ccList = [];
+    String noreply;
+    String defaultOrganization;
 }

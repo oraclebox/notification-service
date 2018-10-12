@@ -1,4 +1,4 @@
-package com.cargosmart.b2b.notificationservice
+package me.oraclebox.service.notificationservice
 
 import groovy.text.SimpleTemplateEngine
 import groovy.util.logging.Slf4j

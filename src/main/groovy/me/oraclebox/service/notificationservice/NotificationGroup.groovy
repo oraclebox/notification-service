@@ -1,4 +1,4 @@
-package com.cargosmart.b2b.notificationservice
+package me.oraclebox.service.notificationservice
 
 import groovy.transform.builder.Builder
 import org.springframework.data.annotation.Id

@@ -1,4 +1,4 @@
-package com.cargosmart.b2b.notificationservice
+package me.oraclebox.service.notificationservice
 
 import com.fasterxml.jackson.annotation.JsonInclude
 import groovy.transform.ToString

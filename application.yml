@@ -13,6 +13,8 @@ email:
   port: ${SMTP_MAIL_PORT:25}
   username: ${SMTP_MAIL_USERNAME:default@example.com}
   password: ${SMTP_MAIL_PASSWORD:exampleuer}
+  noreply: noreply@example.com
+  defaultOrganization: Example.com
 logging:
   pattern:
     console: "%d{yyyy-MM-dd HH:mm:ss} %-5level - %msg%n"

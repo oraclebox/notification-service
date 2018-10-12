@@ -16,7 +16,7 @@ apply plugin: 'groovy'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
 
-group = 'com.cargosmart.b2b'
+group = 'me.oraclebox.service'
 version = 'SNAPSHOT'
 sourceCompatibility = 1.8
 
