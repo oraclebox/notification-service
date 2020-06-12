@@ -152,7 +152,7 @@ curl --request DELETE \
 
 | Field  | Type   | Constraint | Description        | Example                   |
 | ------ | ------ | ---------- | ------------------ | ------------------------- |
-| domain | String | Mandatory  | User domain name   | chanro3                   |
+| domain | String | Mandatory  | User domain name   | cchnero                   |
 | name   | String | Mandatory  | User full name     | Roger Chan                |
 | email  | String | Mandatory  | User email address | roger.chan@example.com |
 | isCC   | String | Optional   | Use CC i           |                           |
