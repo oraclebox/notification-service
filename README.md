@@ -10,7 +10,7 @@ A common service send notification email by simple API.
 
 ```shell
 curl --request POST \
-  --url http://hkgcfdv01681:8017/service/notification/send/email \
+  --url http://host0001:8017/service/notification/send/email \
   --header 'content-type: application/json' \
   --data '{
 	"emails":[
@@ -30,7 +30,7 @@ curl --request POST \
 
 ```shell
 curl --request POST \
-  --url http://hkgcfdv01681:8017/service/notification/send/email \
+  --url http://host0001:8017/service/notification/send/email \
   --header 'content-type: application/json' \
   --data '{
 	"emails":[
@@ -50,7 +50,7 @@ curl --request POST \
 
 ```shell
 curl --request POST \
-  --url http://hkgcfdv01681:8017/service/notification/group \
+  --url http://host0001:8017/service/notification/group \
   --header 'content-type: application/json' \
   --data '{
   		"name":"rpm_notification",
@@ -75,7 +75,7 @@ curl --request POST \
 
 ```shell
 curl --request PUT \
-  --url http://hkgcfdv01681:8017/service/notification/group \
+  --url http://host0001:8017/service/notification/group \
   --header 'content-type: application/json' \
   --data '{
   		"id": "5b6d3066ccb145e627aaa622",
@@ -101,21 +101,21 @@ curl --request PUT \
 
 ```shell
 curl --request GET \
-  --url http://hkgcfdv01681:8017/service/notification/group/{id} 
+  --url http://host0001:8017/service/notification/group/{id} 
 ```
 
 ### Example: List Notification Group
 
 ```shell
 curl --request GET \
-  --url http://hkgcfdv01681:8017/service/notification/group
+  --url http://host0001:8017/service/notification/group
 ```
 
 ### Example: Delete Notification Group by ID
 
 ```shell
 curl --request DELETE \
-  --url http://hkgcfdv01681:8017/service/notification/group/{id} 
+  --url http://host0001:8017/service/notification/group/{id} 
 ```
 
 ### 
